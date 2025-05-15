@@ -1,29 +1,44 @@
 name: 12factor app
 
 on:
-    push:
-        branches:
-            - main
-    pull_request:
-        branches:
-            - main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-          - name: Checkout code
-            uses: actions/checkout@v3
+    env:
+      PYTHONPATH: ./app    # <-- ensures Python can find your app modules
 
-          - name: Set up python
-            uses: actions/setup-python@v4
-            with:
-              python-version: 3.13
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-          - name: Install dependencies
-            run: |
-              pip install -r requirements.txt
+      - name: Set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.13.0
 
-          - name: Run tests
-            run: |
-              pytest -q
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Check Python version
+        run: python --version
+
+      - name: List installed packages
+        run: pip list
+
+      - name: Check current directory
+        run: pwd
+
+      - name: List repo files
+        run: ls -R
+
+      - name: Run tests
+        run: pytest -q
