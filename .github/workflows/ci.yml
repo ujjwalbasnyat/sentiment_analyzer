@@ -25,4 +25,4 @@ jobs:
 
           - name: Run tests
             run: |
-              pytest --disable-warnings -q
+              pytest -q
