@@ -12,7 +12,7 @@ A Python-based sentiment analysis tool that processes text data to determine sen
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/sentiment-analyzer.git
+git clone https://github.com/ujjwalbasnyat/sentiment_analyzer.git
 cd sentiment-analyzer
 pip install -r requirements.txt
 ```
